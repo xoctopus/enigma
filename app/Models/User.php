@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Scopes\ExcludeInactiveScope;
+use App\Observers\UserObserver;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -54,6 +55,7 @@ class User extends Authenticatable
     protected static function boot()
     {
         parent::boot();
+        parent::observe(new UserObserver());
         parent::addGlobalScope(new ExcludeInactiveScope());
     }
 
