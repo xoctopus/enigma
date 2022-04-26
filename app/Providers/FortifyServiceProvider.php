@@ -27,6 +27,16 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->configureRateLimiter();
+    }
+
+    /**
+     * Configure rate limiter.
+     *
+     * @return void
+     */
+    public function configureRateLimiter()
+    {
         RateLimiter::for('login', function (Request $request) {
 
             $email = (string) $request->email;
