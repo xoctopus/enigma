@@ -10,3 +10,12 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
+
+Route::middleware('auth:sanctum')->group(function () {
+
+    Route::apiResource('user', UserController::class);
+
+});
