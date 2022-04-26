@@ -16,6 +16,7 @@ use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
 Route::middleware(config('fortify.middleware', ['web']))->group(function () {
 
+    Route::post('/login', [AuthenticatedSessionController::class, 'store']);
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->middleware('auth:sanctum');
 
 });
